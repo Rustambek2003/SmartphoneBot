@@ -24,7 +24,7 @@ TOKEN = os.environ['TOKEN']
 bot = Bot(token=TOKEN)
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/webhook', methods=['POST', 'GET'])
 def main():
     if request.method == 'GET':
         return {'status': 200}
@@ -57,3 +57,6 @@ def main():
         dp.process_update(update=update)
 
         return {'status': 200}
+
+bot = Bot(token=TOKEN)
+print(bot.get_webhook_info())
